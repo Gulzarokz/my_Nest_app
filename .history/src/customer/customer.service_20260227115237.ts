@@ -1,0 +1,11 @@
+import { Injectable } from '@nestjs/common';
+import { Customer } from './interfaces/customer.interface';
+
+@Injectable()
+export class CustomerService {
+    private customer: Customer[] = [];
+
+    getAllCustomers(): Customer[] {
+        return this.customer;
+    }
+}
