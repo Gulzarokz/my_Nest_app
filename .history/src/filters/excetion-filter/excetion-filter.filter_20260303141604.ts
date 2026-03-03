@@ -1,0 +1,21 @@
+import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
+import { Request, Response } from 'express';
+import { timestamp } from 'rxjs';
+
+@Catch()
+export class ExcetionFilterFilter<T> implements ExceptionFilter {
+  catch(exception: T, host: ArgumentsHost) {
+
+    const ctx = host.switchToHttp();
+    const request = ctx.getRequest<Request>();
+    const response = ctx.getResponse<Response>();
+    const status = exception.getStatus();
+
+    response.status(status).json({
+      statusCode: status,
+      timestamp: new Date().toISOString(),
+
+    })
+
+  }
+}
