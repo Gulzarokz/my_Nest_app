@@ -13,13 +13,11 @@ import { MynameController } from './myname/myname.controller';
 import { UserRoleController } from './user-role/user-role.controller';
 import { ExceptionController } from './exception/exception.controller';
 import { LoggerMiddleware } from './middleware/logger/logger.middleware';
-import { DatabaseService } from './database/database.service';
-import { DatabaseController } from './database/database.controller';
 
 @Module({
   imports: [EmployeeModule, CategoryModule, ControllerModule, StudentModule, CustomerModule],
-  controllers: [AppController, UsersController, ProductController, MynameController, UserRoleController, ExceptionController, DatabaseController,],
-  providers: [AppService, ProductService, DatabaseService,],
+  controllers: [AppController, UsersController, ProductController, MynameController, UserRoleController, ExceptionController,],
+  providers: [AppService, ProductService,],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer){
